@@ -1,3 +1,3 @@
 {
-    "files": ["mainwindow.ui","main.py","home garden.jpg"]
+    "files": ["main.py","schedule.ui","resources.qrc","home garden.jpg","mainwindow.ui","ScheduleWatering.py"]
 }
