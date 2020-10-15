@@ -1,6 +1,6 @@
 # This Python file uses the following encoding: utf-8
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QLabel,QComboBox
 from PyQt5.QtGui import QPixmap
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
@@ -31,12 +31,35 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 
-
-
     def InitWindow(self):
         pixmap = QPixmap("home garden.jpg")
 
 
+        self.btnSchedule.clicked.connect(self.openScheduleWindow)
+
+
+
+
+
+    def openScheduleWindow(self):
+        dlg=setupDlg(self)
+        dlg.exec()
+
+
+class setupDlg(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        uic.loadUi("schedule.ui",self)
+
+
+    def loadZones(self):
+        self.cmbZones.addItem("ZONE1")
+        self.cmbZones.addItem("ZONE2")
+        self.cmbZones.addItem("ZONE3")
+        self.cmbZones.activated[str].connect(self.changeComboBox)
+
+    def changeComboBox(self,text):
+        print("changeComboBox "+text)
 
 
 

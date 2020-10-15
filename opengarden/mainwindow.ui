@@ -440,7 +440,7 @@ color: rgb(238, 238, 236);</string>
     <zorder>label_2</zorder>
     <zorder>groupBox_3</zorder>
    </widget>
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="btnSchedule">
     <property name="geometry">
      <rect>
       <x>980</x>
@@ -529,6 +529,14 @@ color: rgb(238, 238, 236);</string>
    </property>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionschedule">
+   <property name="text">
+    <string>schedule</string>
+   </property>
+   <property name="toolTip">
+    <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Schedule Watering&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
