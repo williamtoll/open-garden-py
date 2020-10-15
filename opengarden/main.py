@@ -20,16 +20,22 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 
+        self.setGeometry(50,50,320,200)
+        self.setWindowTitle("Checkbox Example")
+        self.show()
+
         #Load the UI Page
         uic.loadUi('mainwindow.ui', self)
+
         self.InitWindow()
+
 
 
 
 
     def InitWindow(self):
         pixmap = QPixmap("home garden.jpg")
-        self.labelImage.setPixmap(pixmap)
+
 
 
 

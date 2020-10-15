@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/images">
+        <file>home garden.jpg</file>
+        <file>images/riego.png</file>
+        <file>images/ahorrar-agua.png</file>
+        <file>images/planta.png</file>
+        <file>images/irrigacion.png</file>
+    </qresource>
+</RCC>
