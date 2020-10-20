@@ -6,6 +6,8 @@ from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 import sys  # We need sys so that we can pass argv to QApplication
 import os
+import serial
+import time
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -29,16 +31,43 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.InitWindow()
 
+        self.ser = serial.Serial('/dev/ttyUSB0',9600)
+
+        self.btnTestSolenoidValve.clicked.connect(self.openSolenoidValve)
+
+
+    def openSolenoidValve(self):
+        print("solenoid valve")
+        self.getArduinoData()
+        self.sendDataToArduino("open")
+        time.sleep(3000)
+        self.sendDataToArduino("close")
 
 
     def InitWindow(self):
         pixmap = QPixmap("home garden.jpg")
-
-
         self.btnSchedule.clicked.connect(self.openScheduleWindow)
 
 
 
+    def starArduino(self):
+        print(self.ser)
+
+
+    def sendDataToArduino(self,dataToSend):
+        print(dataToSend)
+        print (self.ser.portstr)       # check which port was really used
+        self.ser.write(dataToSend.encode())      # write a string
+        #self.ser.close()             # close port
+
+
+    def getArduinoData(self):
+        b=self.ser.readline()
+        print("b" , b)
+#        b.encode('utf-8').strip()
+#        string_n=b.decode()
+#        string=string_n.rstrip()
+#        print(string)
 
 
     def openScheduleWindow(self):

@@ -472,7 +472,7 @@ color: rgb(238, 238, 236);</string>
      <string>CONFIG</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_3">
+   <widget class="QPushButton" name="buttonOnOf">
     <property name="geometry">
      <rect>
       <x>980</x>
@@ -515,6 +515,22 @@ color: rgb(238, 238, 236);</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnTestSolenoidValve">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>410</y>
+      <width>181</width>
+      <height>121</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="text">
+     <string>Test Solenoid Valve</string>
     </property>
    </widget>
   </widget>
