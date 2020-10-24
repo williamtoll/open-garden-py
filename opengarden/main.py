@@ -31,7 +31,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.InitWindow()
 
-        self.ser = serial.Serial('/dev/ttyUSB0',9600)
+        self.ser = serial.Serial('/dev/ttyUSB1',9600)
 
         self.btnTestSolenoidValve.clicked.connect(self.openSolenoidValve)
 
@@ -39,9 +39,10 @@ class MainWindow(QtWidgets.QMainWindow):
     def openSolenoidValve(self):
         print("solenoid valve")
         self.getArduinoData()
-        self.sendDataToArduino("open")
-        time.sleep(3000)
-        self.sendDataToArduino("close")
+        time.sleep(1)
+        self.sendDataToArduino("open\n")
+        time.sleep(10)
+        self.sendDataToArduino("close\n")
 
 
     def InitWindow(self):
@@ -55,15 +56,20 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
     def sendDataToArduino(self,dataToSend):
-        print(dataToSend)
-        print (self.ser.portstr)       # check which port was really used
-        self.ser.write(dataToSend.encode())      # write a string
-        #self.ser.close()             # close port
+        self.ser = serial.Serial('/dev/ttyUSB1',9600)
+        if(self.ser.isOpen()):
+            print(dataToSend)
+            print (self.ser.portstr)       # check which port was really used
+            self.ser.write(dataToSend.encode())      # write a string
+            self.ser.close()             # close port
 
 
     def getArduinoData(self):
-        b=self.ser.readline()
-        print("b" , b)
+        self.ser = serial.Serial('/dev/ttyUSB1',9600)
+        if(self.ser.isOpen()):
+            b=self.ser.readline()
+            print("b" , b)
+            self.ser.close();
 #        b.encode('utf-8').strip()
 #        string_n=b.decode()
 #        string=string_n.rstrip()
