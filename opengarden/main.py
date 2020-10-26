@@ -1,11 +1,13 @@
 # This Python file uses the following encoding: utf-8
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QLabel
+from PyQt5.QtWidgets import QApplication, QDialog, QVBoxLayout, QLabel,QComboBox
 from PyQt5.QtGui import QPixmap
 from pyqtgraph import PlotWidget, plot
 import pyqtgraph as pg
 import sys  # We need sys so that we can pass argv to QApplication
 import os
+import serial
+import time
 
 
 class MainWindow(QtWidgets.QMainWindow):
@@ -20,17 +22,79 @@ class MainWindow(QtWidgets.QMainWindow):
 
 
 
+        self.setGeometry(50,50,320,200)
+        self.setWindowTitle("Checkbox Example")
+        self.show()
+
         #Load the UI Page
         uic.loadUi('mainwindow.ui', self)
+
         self.InitWindow()
 
+        self.ser = serial.Serial('/dev/ttyUSB1',9600)
 
+        self.btnTestSolenoidValve.clicked.connect(self.openSolenoidValve)
+
+
+    def openSolenoidValve(self):
+        print("solenoid valve")
+        self.getArduinoData()
+        time.sleep(1)
+        self.sendDataToArduino("open\n")
+        time.sleep(10)
+        self.sendDataToArduino("close\n")
 
 
     def InitWindow(self):
         pixmap = QPixmap("home garden.jpg")
-        self.labelImage.setPixmap(pixmap)
+        self.btnSchedule.clicked.connect(self.openScheduleWindow)
 
+
+
+    def starArduino(self):
+        print(self.ser)
+
+
+    def sendDataToArduino(self,dataToSend):
+        self.ser = serial.Serial('/dev/ttyUSB1',9600)
+        if(self.ser.isOpen()):
+            print(dataToSend)
+            print (self.ser.portstr)       # check which port was really used
+            self.ser.write(dataToSend.encode())      # write a string
+            self.ser.close()             # close port
+
+
+    def getArduinoData(self):
+        self.ser = serial.Serial('/dev/ttyUSB1',9600)
+        if(self.ser.isOpen()):
+            b=self.ser.readline()
+            print("b" , b)
+            self.ser.close();
+#        b.encode('utf-8').strip()
+#        string_n=b.decode()
+#        string=string_n.rstrip()
+#        print(string)
+
+
+    def openScheduleWindow(self):
+        dlg=setupDlg(self)
+        dlg.exec()
+
+
+class setupDlg(QDialog):
+    def __init__(self, parent=None):
+        super().__init__(parent)
+        uic.loadUi("schedule.ui",self)
+
+
+    def loadZones(self):
+        self.cmbZones.addItem("ZONE1")
+        self.cmbZones.addItem("ZONE2")
+        self.cmbZones.addItem("ZONE3")
+        self.cmbZones.activated[str].connect(self.changeComboBox)
+
+    def changeComboBox(self,text):
+        print("changeComboBox "+text)
 
 
 
