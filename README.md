@@ -7,6 +7,8 @@ The project consist on an Aplication Running on a Raspberry PI connected to an A
 
 
 ##SOFTWARE
+
+
 <a href="https://ibb.co/0Y8V2LZ"><img src="https://i.ibb.co/tYkPK6c/opengardening-sw.png" alt="opengardening-sw" border="0"></a>
 
 
