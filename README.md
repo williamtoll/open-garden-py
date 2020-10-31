@@ -1,4 +1,6 @@
 The project consist on an Aplication Running on a Raspberry PI connected to an Arduino board where you can set your garden water planning schedule
+
+
 <a href="https://ibb.co/nRddQKf"><img src="https://i.ibb.co/4Jvv40M/opengardening.png" alt="opengardening" border="0"></a>
 
 ##HARDWARE
