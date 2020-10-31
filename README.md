@@ -11,6 +11,10 @@ The project consist on an Aplication Running on a Raspberry PI connected to an A
 
 <a href="https://ibb.co/0Y8V2LZ"><img src="https://i.ibb.co/tYkPK6c/opengardening-sw.png" alt="opengardening-sw" border="0"></a>
 
+##ICONS 
+
+
+Icons made by <a href="https://www.flaticon.com/authors/ddara" title="dDara">dDara</a> from <a href="https://www.flaticon.com/" title="Flaticon"> www.flaticon.com</a>
 
 
 
