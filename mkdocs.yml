@@ -1,0 +1,27 @@
+site_name: Open Garden Docs
+repo_url: https://github.com/williamtoll/open-garden-py
+repo_name: williamtoll/open-garden-py
+
+theme:
+  name: material
+  favicon: images/riego.png
+  logo: images/riego.png
+
+  palette:
+    primary: teal
+
+markdown_extensions:
+  - admonition
+  - pymdownx.tabbed
+  - pymdownx.superfences
+  - pymdownx.details
+
+#  - markdown_include.include:
+#      base_path: docs
+
+#extra_css:
+#  - css/termynal.css
+
+#extra_javascript:
+#  - js/termynal.js
+#  - js/custom.js
