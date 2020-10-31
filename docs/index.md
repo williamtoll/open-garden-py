@@ -15,27 +15,3 @@ Open Gardening is a project that aims to develop cheap irrigation systems for ho
 ![greenhouse](https://github.com/williamtoll/open-garden-py/blob/main/MainWindow.png?raw=true)
 
 ![scheduler](https://i.ibb.co/tYkPK6c/opengardening-sw.png)
-
-
-## Components
-
-The project consist of a Python Application Running on a Raspberry PI connected to an Arduino board where you can set your garden water planning schedule.
-
-* Arduino and open source hardware https://en.wikipedia.org/wiki/Arduino
-* Raspberry PI
-* Touch Panel for Raspberry PI
-* Solenoid Electrovalve https://en.wikipedia.org/wiki/Solenoid_valve
-* Arduino Relay Module
-
-
-
-
-
-
-## Hardware
-
-<a href="https://ibb.co/5WStGsV"><img src="https://i.ibb.co/PZP3F18/opengardening-hw.png" alt="opengardening-hw" border="0"></a>
-
-
-## Software
-<a href="https://ibb.co/0Y8V2LZ"><img src="https://i.ibb.co/tYkPK6c/opengardening-sw.png" alt="opengardening-sw" border="0"></a>
