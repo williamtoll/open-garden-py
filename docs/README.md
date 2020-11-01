@@ -1,4 +1,4 @@
-# Open Garden
+# [Open Garden](https://williamtoll.github.io/open-garden-py/)
 
 <a href="https://ibb.co/nRddQKf"><img src="https://i.ibb.co/4Jvv40M/opengardening.png" alt="opengardening" border="0"></a>
 
@@ -14,3 +14,8 @@ One of the main goals of the project is to develop a system with efficient water
 ![greenhouse](https://github.com/williamtoll/open-garden-py/blob/main/MainWindow.png?raw=true)
 
 ![scheduler](https://i.ibb.co/tYkPK6c/opengardening-sw.png)
+
+
+## Documentation
+
+Check out our full documentation [here](https://williamtoll.github.io/open-garden-py/)
