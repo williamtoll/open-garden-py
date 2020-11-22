@@ -8,7 +8,10 @@ import sys  # We need sys so that we can pass argv to QApplication
 import os
 import serial
 import time
+import RPi.GPIO as GPIO
 
+relayin1=11
+relayin2=13
 
 class MainWindow(QtWidgets.QMainWindow):
 
@@ -31,12 +34,23 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.InitWindow()
 
-        self.ser = serial.Serial('/dev/ttyUSB1',9600)
+        #self.ser = serial.Serial('/dev/ttyUSB1',9600)
+        self.setupRasbperry()
 
-        self.btnTestSolenoidValve.clicked.connect(self.openSolenoidValve)
+        self.btnTestSolenoidValve.clicked.connect(self.openSolenoidValveRasp)
 
 
-    def openSolenoidValve(self):
+    def setupRasbperry(self):
+        GPIO.setmode(GPIO.BOARD)
+        
+        GPIO.setup(relayin1,GPIO.OUT)
+        GPIO.setup(relayin2,GPIO.OUT)
+
+        GPIO.output(relayin1,False)
+        GPIO.output(relayin2,False)
+
+
+    def openSolenoidValveArduino(self):
         print("solenoid valve")
         self.getArduinoData()
         time.sleep(1)
@@ -44,6 +58,11 @@ class MainWindow(QtWidgets.QMainWindow):
         time.sleep(10)
         self.sendDataToArduino("close\n")
 
+    def openSolenoidValveRasp(self):
+        print("open solenoid valve rasp")
+        GPIO.output(relayin1,True)
+        time.sleep(2)
+        GPIO.output(relayin2,False)
 
     def InitWindow(self):
         pixmap = QPixmap("home garden.jpg")
