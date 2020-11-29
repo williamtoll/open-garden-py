@@ -119,10 +119,10 @@
     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;TO:&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="pushButtonSaveSchedule">
    <property name="geometry">
     <rect>
-     <x>570</x>
+     <x>680</x>
      <y>280</y>
      <width>111</width>
      <height>41</height>
@@ -132,7 +132,7 @@
     <string>AGREGAR</string>
    </property>
   </widget>
-  <widget class="QGroupBox" name="groupBox_2">
+  <widget class="QGroupBox" name="groupBoxList">
    <property name="geometry">
     <rect>
      <x>150</x>
@@ -460,7 +460,7 @@
     </property>
    </widget>
   </widget>
-  <widget class="QDateTimeEdit" name="dateTimeEdit">
+  <widget class="QDateTimeEdit" name="dateTimeFrom">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -469,8 +469,14 @@
      <height>41</height>
     </rect>
    </property>
+   <property name="displayFormat">
+    <string>dd/MM/yyyy</string>
+   </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
+   </property>
   </widget>
-  <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+  <widget class="QDateTimeEdit" name="dateTimeTo">
    <property name="geometry">
     <rect>
      <x>310</x>
@@ -478,6 +484,44 @@
      <width>194</width>
      <height>41</height>
     </rect>
+   </property>
+   <property name="displayFormat">
+    <string>dd/MM/yyyy</string>
+   </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEditFrom">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>230</y>
+     <width>118</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="displayFormat">
+    <string>HH:mm</string>
+   </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEditTo">
+   <property name="geometry">
+    <rect>
+     <x>530</x>
+     <y>290</y>
+     <width>118</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <property name="displayFormat">
+    <string>HH:mm</string>
+   </property>
+   <property name="calendarPopup">
+    <bool>true</bool>
    </property>
   </widget>
  </widget>

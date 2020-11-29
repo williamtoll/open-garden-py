@@ -32,7 +32,7 @@
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
-       <x>300</x>
+       <x>30</x>
        <y>40</y>
        <width>381</width>
        <height>41</height>
@@ -48,7 +48,7 @@
     <widget class="QLabel" name="label_29">
      <property name="geometry">
       <rect>
-       <x>620</x>
+       <x>410</x>
        <y>10</y>
        <width>131</width>
        <height>91</height>
@@ -77,7 +77,7 @@
     <property name="title">
      <string/>
     </property>
-    <widget class="QLabel" name="label_2">
+    <widget class="QLabel" name="labelStatus">
      <property name="geometry">
       <rect>
        <x>60</x>
@@ -95,7 +95,7 @@ color: rgb(238, 238, 236);</string>
       <string>WATERING STATUS:</string>
      </property>
     </widget>
-    <widget class="QTableView" name="tableView">
+    <widget class="QTableView" name="tableViewStatus">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -108,7 +108,7 @@ color: rgb(238, 238, 236);</string>
       <string notr="true">background-color: rgb(136, 138, 133);</string>
      </property>
     </widget>
-    <widget class="QGroupBox" name="groupBox_3">
+    <widget class="QGroupBox" name="groupBoxWateringList">
      <property name="geometry">
       <rect>
        <x>20</x>
@@ -436,17 +436,17 @@ color: rgb(238, 238, 236);</string>
       </property>
      </widget>
     </widget>
-    <zorder>tableView</zorder>
-    <zorder>label_2</zorder>
-    <zorder>groupBox_3</zorder>
+    <zorder>tableViewStatus</zorder>
+    <zorder>labelStatus</zorder>
+    <zorder>groupBoxWateringList</zorder>
    </widget>
    <widget class="QPushButton" name="btnSchedule">
     <property name="geometry">
      <rect>
       <x>980</x>
-      <y>130</y>
+      <y>100</y>
       <width>181</width>
-      <height>121</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -460,9 +460,9 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>980</x>
-      <y>270</y>
+      <y>190</y>
       <width>181</width>
-      <height>121</height>
+      <height>81</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -478,7 +478,7 @@ color: rgb(238, 238, 236);</string>
       <x>980</x>
       <y>10</y>
       <width>181</width>
-      <height>111</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -521,9 +521,9 @@ color: rgb(238, 238, 236);</string>
     <property name="geometry">
      <rect>
       <x>980</x>
-      <y>410</y>
+      <y>280</y>
       <width>181</width>
-      <height>121</height>
+      <height>71</height>
      </rect>
     </property>
     <property name="styleSheet">
@@ -533,6 +533,22 @@ color: rgb(238, 238, 236);</string>
      <string>Test Solenoid Valve</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnTestZones">
+    <property name="geometry">
+     <rect>
+      <x>980</x>
+      <y>360</y>
+      <width>181</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(136, 138, 133);</string>
+    </property>
+    <property name="text">
+     <string>Test ZONES</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -540,7 +556,7 @@ color: rgb(238, 238, 236);</string>
      <x>0</x>
      <y>0</y>
      <width>1199</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
