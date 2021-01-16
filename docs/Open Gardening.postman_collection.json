@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "6d851d89-c5b0-4530-a1b9-1c6b8a14590f",
+		"name": "Open Gardening",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "new-schedule",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"date_from\":\"2021-01-16\",\r\n    \"time_from\":\"10:20\",\r\n    \"date_to\":\"2021-01-16\",\r\n    \"time_to\":\"10:50\",\r\n    \"status\": \"pending\",\r\n    \"zone_id\":1\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:5000/schedule/new",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"schedule",
+						"new"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "schedule-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:5000/schedule/list?date_from=2021-01-01&date_to=2021-01-16",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"schedule",
+						"list"
+					],
+					"query": [
+						{
+							"key": "date_from",
+							"value": "2021-01-01"
+						},
+						{
+							"key": "date_to",
+							"value": "2021-01-16"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
