@@ -1,4 +1,5 @@
 # This Python file uses the following encoding: utf-8
+#WEB SERVICE OPEN GARDEN
 
 from flask import Flask
 from flask import request, jsonify, redirect,make_response
