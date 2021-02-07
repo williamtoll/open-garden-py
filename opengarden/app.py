@@ -1,5 +1,4 @@
 # This Python file uses the following encoding: utf-8
-#WEB SERVICE OPEN GARDEN
 
 from flask import Flask
 from flask import request, jsonify, redirect,make_response
@@ -54,6 +53,21 @@ def saveSchedule(date_from,time_from,date_to,time_to,zone_id,status):
         logging.info(row)
     return c
 
+def updateSchedule(date_from,time_from,date_to,time_to,zone_id,status, id):
+    print("update schedule")
+
+    conn=getConnection()
+    c=conn.cursor()
+    watering_schedule=[(date_from +" " + time_from, date_to+" "+time_to, zone_id, status)]
+
+    c.execute("UPDATE watering_schedule SET date_from=? , date_to=?, zone_id=?, status=? WHERE watering_id=?;",(date_from+ " "+time_from,date_to+" "+time_to,zone_id,status, id, ))
+    conn.commit()
+    logging.info("row inserted")
+    for row in c:
+        logging.info(row)
+    return c
+
+
 #date_from,date_to
 def getScheduleList():
     conn=getConnection()
@@ -83,13 +97,19 @@ def getSchedule(id):
     print(json_serializer(c))
     return scheduleList
 
+def deleteSchedule(id):
+	conn=getConnection()
+	c=conn.cursor()
+	c.execute("DELETE FROM watering_schedule WHERE watering_id=(?);", (id, ))
+	conn.commit()
+	return c
 
 def getScheduleListAll():
     conn=getConnection()
     c=conn.cursor()
     scheduleList=[]
     data={}
-    c.execute("SELECT * FROM watering_schedule WHERE status = 'pending'")
+    c.execute("SELECT * FROM watering_schedule WHERE status = 'pending' ORDER BY watering_id DESC")
     for row in c:
         logging.info(row)
         data={"date_from":row[0],"date_to":row[1],"zone_id":row[2],"watering_id":row[3],"status":row[4]}
@@ -116,20 +136,57 @@ def getConnection():
         conn=None
         try:
             #conn=sqlite3.connect('C://repo//openwatering.db')
-            ##conn=sqlite3.connect('/home/imcp/Servicio/openwatering.db')
-            conn=sqlite3.connect('/Users/wtoledo/Documents/wt/opengarden/open-garden-py/database/openwatering.db')
+            conn=sqlite3.connect('/home/imcp/Servicio/openwatering.db')
+
         except Error as e:
             print("Couldn't get connection ")
             print(e)
 
         return conn
 
-#@app.route('/schedule/update', methods=['PUT'])
-#def update():
+
+@app.route('/schedule/update/<a>', methods=['PUT'])
+@cross_origin()
+def update(a):
+    logging.info("schedule update")
+    logging.info(request)
+
+    logging.info("params")
+    params = request.get_json() 
+
+    logging.info(params)
+
+    data={}
+    logging.info(f"data  {data}")
+
+    res = updateSchedule(params['date_from'],params['time_from'],params['date_to'],params['time_to'],params['zone_id'],params['status'],a)
+    
+    logging.info(f"res {res.lastrowid}")
+    data={"watering_id":res.lastrowid}
+
+    response = make_response(data,200,)
+    response.headers["Content-Type"] = "application/json"
+    return response
 
 
-#@app.route('/schedule/delete', methods=['DELETE'])
-#def delete():
+@app.route('/schedule/delete/<a>', methods=['DELETE'])
+@cross_origin()
+def delete(a):
+	logging.info("schedule delete")
+	logging.info(request)
+
+	data={}
+	logging.info(f"data  {data}")
+
+	res=deleteSchedule(a)
+
+	logging.info(f"res {res.lastrowid}")
+	data={"watering_id":res.lastrowid}
+
+	response = make_response(data,200,)
+	response.headers["Content-Type"] = "application/json"
+	return response
+
 
 @app.route('/schedule/listCompleted', methods=['GET'])
 def list():
