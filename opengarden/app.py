@@ -62,7 +62,7 @@ def updateSchedule(date_from,time_from,date_to,time_to,zone_id,status, id):
 
     c.execute("UPDATE watering_schedule SET date_from=? , date_to=?, zone_id=?, status=? WHERE watering_id=?;",(date_from+ " "+time_from,date_to+" "+time_to,zone_id,status, id, ))
     conn.commit()
-    logging.info("row inserted")
+    logging.info("row updated")
     for row in c:
         logging.info(row)
     return c
@@ -98,11 +98,11 @@ def getSchedule(id):
     return scheduleList
 
 def deleteSchedule(id):
-	conn=getConnection()
-	c=conn.cursor()
-	c.execute("DELETE FROM watering_schedule WHERE watering_id=(?);", (id, ))
-	conn.commit()
-	return c
+    conn=getConnection()
+    c=conn.cursor()
+    c.execute("DELETE FROM watering_schedule WHERE watering_id=(?);", (id, ))
+    conn.commit()
+    return c
 
 def getScheduleListAll():
     conn=getConnection()
@@ -159,12 +159,10 @@ def update(a):
     data={}
     logging.info(f"data  {data}")
 
-    res = updateSchedule(params['date_from'],params['time_from'],params['date_to'],params['time_to'],params['zone_id'],params['status'],a)
-    
-    logging.info(f"res {res.lastrowid}")
-    data={"watering_id":res.lastrowid}
+    res=updateSchedule(params['date_from'],params['time_from'],params['date_to'],params['time_to'],params['zone_id'],params['status'],a)
 
-    response = make_response(data,200,)
+
+    response = make_response("Actualizado correctamente",200,)
     response.headers["Content-Type"] = "application/json"
     return response
 
@@ -172,20 +170,20 @@ def update(a):
 @app.route('/schedule/delete/<a>', methods=['DELETE'])
 @cross_origin()
 def delete(a):
-	logging.info("schedule delete")
-	logging.info(request)
+    logging.info("schedule delete")
+    logging.info(request)
 
-	data={}
-	logging.info(f"data  {data}")
+    data={}
+    logging.info(f"data  {data}")
 
-	res=deleteSchedule(a)
+    res=deleteSchedule(a)
 
-	logging.info(f"res {res.lastrowid}")
-	data={"watering_id":res.lastrowid}
+    logging.info(f"res {res.lastrowid}")
+    data={"watering_id":res.lastrowid}
 
-	response = make_response(data,200,)
-	response.headers["Content-Type"] = "application/json"
-	return response
+    response = make_response(data,200,)
+    response.headers["Content-Type"] = "application/json"
+    return response
 
 
 @app.route('/schedule/listCompleted', methods=['GET'])
