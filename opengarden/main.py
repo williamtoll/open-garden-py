@@ -24,12 +24,8 @@ class MainWindow(QtWidgets.QMainWindow):
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.title = "OpenGarden"
-        self.top = 200
-        self.left = 500
-        self.width = 400
-        self.height = 300
-
-        self.setGeometry(50,50,320,200)
+        self.showFullScreen()
+        
         self.setWindowTitle("Watering System")
         self.show()
 
